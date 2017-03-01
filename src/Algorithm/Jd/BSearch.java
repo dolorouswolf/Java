@@ -20,6 +20,18 @@ public class BSearch {
         for (int i = 0; i < iarray.length; i++) {
             BSearch.bsearch(iarray, 0, iarray.length - 1, iarray[i]);
         }
+        System.out.println("循环二分查找：");
+        int result1 = 0;
+        System.out.println("测试不存在的key");
+        result1 = BSearch.bSearchLoop(iarray, 0, iarray.length - 1, 10);
+        System.out.println("result1:  " + result1);
+        System.out.println("测试整个数组的值");
+        for (int i :
+                iarray) {
+            int result2 = 0;
+            result2 = BSearch.bSearchLoop(iarray, 0, iarray.length - 1, i);
+            System.out.println("result: " + result2);
+        }
     }
 
     // 递归法  二分查找
@@ -38,7 +50,6 @@ public class BSearch {
             } else if (array[mid] > key) {
                 bsearch(array, start, mid - 1, key);
             } else {
-                System.out.println("resulet index:   " + mid);
                 return mid;
             }
         }
@@ -47,23 +58,22 @@ public class BSearch {
 
     //循环法二分查找
 
-    public void bSearchLoop(int[] array, int start, int end, int key) {
+    public static int bSearchLoop(int[] array, int start, int end, int key) {
 
-        while ((end - start) / 2 != 0) {
-            int mid = (end - start) / 2 + start;
-            if (array[mid] == key) {
-                return;
-            }
-
+        while (start <= end) {
+            int mid = (end + start) / 2;
+            System.out.println("Current: start[" + start + "] " + array[start]
+                    + " end[" + end + "] " + array[end] +
+                    " mid[" + mid + "]" + array[mid]);
             if (array[mid] < key) {
-                start = mid;
-            }
-
-            if (array[mid] > key) {
-                end = mid;
+                start = mid + 1;
+            } else if (array[mid] > key) {
+                end = mid - 1;
+            } else {
+                return mid;
             }
         }
-
+        return -1;
 
     }
 
