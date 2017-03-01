@@ -39,7 +39,7 @@ public class BSearch {
     // 递归法  二分查找
     public static int bsearch(int[] array, int start, int end, int key) {
 
-        int mid = (end + start) / 2;
+        int mid = (end + start) >> 1;
         //默认找不到时返回-1
         int result = -1;
         if (start <= end) {
@@ -63,7 +63,7 @@ public class BSearch {
     public static int bSearchLoop(int[] array, int start, int end, int key) {
 
         while (start <= end) {
-            int mid = (end + start) / 2;
+            int mid = (end + start) >> 1;
             System.out.println("Current: start[" + start + "] " + array[start]
                     + " end[" + end + "] " + array[end] +
                     " mid[" + mid + "]" + array[mid]);
