@@ -11,7 +11,7 @@ public class LinkedStack {
     private Node top;
 
     public LinkedStack(){
-        //链栈的栈底是一个null的节点，如果一个节点data和next都是null 则栈为空
+        //链栈的栈底是一个null的节点，如果一个节点next是null 则栈为空
         this.top = new Node();
     }
 
@@ -23,6 +23,7 @@ public class LinkedStack {
 
     public Node pop(){
         Node node = top;
+        node.next = null;
         top = top.next;
         return node;
     }
