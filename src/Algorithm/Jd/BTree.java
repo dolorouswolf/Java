@@ -20,21 +20,15 @@ public class BTree {
             nodeList.add(new Node(iarray[i]));
         }
 
-        //此时不能处理i=(iarray.length/2-1)  因为最后一个子树可能没有右节点 直接i*2+2 会数组越界
-        for (int i = 0; i < (iarray.length / 2 - 1); i++) {
+        //
+        for (int i = 0; i < (iarray.length / 2); i++) {
             //乘以2 是因为每一个父节点都会有两个子节点
             nodeList.get(i).leftChild = nodeList.get(i * 2 + 1);
+            if (i == (iarray.length / 2 - 1) && (iarray.length % 2 == 0)) {
+                //在最后一个父节点时需要判断总节点是否为偶数，如果偶数说明最后一个父节点没有右孩子
+                break;
+            }
             nodeList.get(i).rightChild = nodeList.get(i * 2 + 2);
-        }
-
-        int lastParentIndex = iarray.length / 2 - 1;
-        // 左孩子
-        nodeList.get(lastParentIndex).leftChild = nodeList
-                .get(lastParentIndex * 2 + 1);
-        // 右孩子,如果数组的长度为奇数才建立右孩子
-        if (iarray.length % 2 == 1) {
-            nodeList.get(lastParentIndex).rightChild = nodeList
-                    .get(lastParentIndex * 2 + 2);
         }
 
     }
