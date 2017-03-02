@@ -11,7 +11,7 @@ import java.util.EmptyStackException;
  */
 public class ArrayStack {
     public static void main(String[] args) {
-        ArrayStack arrayStack = new ArrayStack(1);
+        ArrayStack arrayStack = new ArrayStack(10);
         arrayStack.push(1);
         arrayStack.push(2);
         System.out.println(arrayStack.peek());
@@ -56,10 +56,6 @@ public class ArrayStack {
     }
 
     public boolean isEmpty() {
-        if (top != -1) {
-            return false;
-        } else {
-            return true;
-        }
+        return (top == -1)?true:false;
     }
 }
