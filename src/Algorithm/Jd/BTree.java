@@ -35,30 +35,36 @@ public class BTree {
 
     //先序遍历  根 左 右
     public static void preOrderTraverse(Node node) {
-        if (node == null)
-            return;
-        System.out.print(node.data + " ");
-        preOrderTraverse(node.leftChild);
-        preOrderTraverse(node.rightChild);
+        System.out.print(node.data+" ");
+        if(node.leftChild !=null){
+            preOrderTraverse(node.leftChild);
+        }
+        if(node.rightChild != null){
+            preOrderTraverse(node.rightChild);
+        }
     }
 
     //中序遍历  左 根 右
     public static void inOrderTraverse(Node node) {
-        if (node == null)
-            return;
-        inOrderTraverse(node.leftChild);
-        System.out.print(node.data + " ");
-        inOrderTraverse(node.rightChild);
+        if(node.leftChild !=null){
+            inOrderTraverse(node.leftChild);
+        }
+        System.out.print(node.data+" ");
+        if(node.rightChild != null){
+            inOrderTraverse(node.rightChild);
+        }
     }
 
 
     //中序遍历  左 右 根
     public static void postOrderTraverse(Node node) {
-        if (node == null)
-            return;
-        postOrderTraverse(node.leftChild);
-        postOrderTraverse(node.rightChild);
-        System.out.print(node.data + " ");
+        if(node.leftChild !=null){
+            postOrderTraverse(node.leftChild);
+        }
+        if(node.rightChild != null){
+            postOrderTraverse(node.rightChild);
+        }
+        System.out.print(node.data+" ");
     }
 
     public static void main(String[] args) {
