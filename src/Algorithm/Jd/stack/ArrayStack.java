@@ -11,7 +11,7 @@ import java.util.EmptyStackException;
  */
 public class ArrayStack {
     public static void main(String[] args) {
-        ArrayStack arrayStack = new ArrayStack();
+        ArrayStack arrayStack = new ArrayStack(1);
         arrayStack.push(1);
         arrayStack.push(2);
         System.out.println(arrayStack.peek());
@@ -41,7 +41,11 @@ public class ArrayStack {
     }
 
     public void push(int i) {
-        array[++top] = i;
+        try {
+            array[++top] = i;
+        } catch (Exception e) {
+            throw  new StackOverflowError();
+        }
     }
 
     public int peek() {
